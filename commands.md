@@ -3,12 +3,6 @@
 pip install -r requirements.txt
 
 # Create the database
-## Prepare project to migrate
-Before each migration, we should prepare the migration. This will prepare a SQL to create the database. In this case, the name is 'amazdont'.
-
-```
-python manage.py makemigrations <proyect name>
-```
 
 ## Generate all necesary things in project
 When the project is ready to migrate, execute it.
