@@ -1,27 +1,37 @@
+@@ -0,0 +1,40 @@
 # Install Requirements
 
 pip install -r requirements.txt
 
 # Create the database
 
-## Generate all necesary things in project
-When the project is ready to migrate, execute it.
-
+## Create the necessary tables
+This command create the neccesary tables for the INTALLED_APPS
 ```
 python manage.py migrate
 ```
 
-### [OPTIONAL] Check generated SQL to create tables
-To see the SQL generated
+## [Optional] Migrate only one part
+If we need to change the database but dont want to delete and regenerate it, we can only regenerate the part around our application. In this case, we need to prepare the migration with the next command. In this case, our proyect name is ```web```
+
 ```
-python manage.py sqlmigrate <application> <version>
-python manage.py sqlmigrate amazdont 0001
+python manage.py makemigrations <proyect_name>
+```
+
+### [OPTIONAL] Check generated SQL to create tables
+
+This create a new file in ```proyect_name/migrations``` with a number. We can apply this migration file using the command
+
+```
+python manage.py sqlmigrate <proyect_name> <file_number>
+python manage.py sqlmigrate web 0001
 ```
 
 # Admin section
 
 ## Create super user
-It is saved locally in your database instance
+It is neccesary to acces to the admin control panel, that is located in ```http://127.0.0.1:8000/admin```
+
 ```
 python manage.py createsuperuser
 ```
