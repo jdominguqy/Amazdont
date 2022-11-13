@@ -1,6 +1,5 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'web/style.css' %}">
-
+{% extends "web/base.html" %}
+{% block content %}
 
 <form action="" method="get" class="register">
     <p>
@@ -35,3 +34,5 @@
         </div>
     </p>
 </form>
+
+{% endblock %}
