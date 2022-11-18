@@ -1,0 +1,37 @@
+{% extends "web/base.html" %}
+{% block content %}
+<h1>Welcome to Amazdont!</h1>
+<h3>Please register</h3>
+Already a member? <a href="http://127.0.0.1:8000/web/login_page" target="_self">Log in here</a>
+<div style="background-color: #000000; color: #FFFFFF; padding: 10px">
+  <table style="color:white">
+    <form>
+      <tr>
+        <td><label for="name">Name:</label><br>
+        <input type="text" id="name" require maxlength="20"></td>
+        <td><label for="surname">Surname:</label><br>
+        <input type="text" id="surname" require maxlength="50"></td>
+        <td><label for="username">Username:</label><br>
+        <input type="text" id="username" require></td>
+      </tr>
+      <tr> 
+        <td><label for="email">Email:</label><br>
+        <input type="text" id="email" require maxlength="50"></td>
+        <td><label for="dateofbirth">Date of birth:</label><br>
+        <input type="date" id="dob"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password:</label><br>
+        <input type="password" id="password" require minlength="8"></td>
+        <td><label for="rep_password">Repeat password:</label><br>
+        <input type="password" id="rep_password" require minlength="8"></td>
+      </tr>
+  </table>
+  <br>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Clear all">
+</form>
+</div>
+<br>
+
+{% endblock %}
