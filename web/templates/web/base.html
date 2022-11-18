@@ -1,9 +1,21 @@
-<header>
+<html>
+
+<head>
+    <title>Amazdont</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     {% load static %}
     <link rel="stylesheet" href="{% static 'web/style.css' %}">
-</header>
+</head>
 
-{% block content %}{% endblock %}
+<body>
+    {% block content %}{% endblock %}
+</body>
 
 <footer>
     <ul>
@@ -13,3 +25,5 @@
         <li>Piatti, Vittoria</li>
     </ul>
 </footer>
+
+</html>
