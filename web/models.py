@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class User(models.Model):
     name = models.CharField(max_length=20)
@@ -8,16 +7,19 @@ class User(models.Model):
     email = models.CharField(max_length=50)
     def __str__(self):
         return self.name + ' ' + self.surname
-    
+
 class Users(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=50)
     username = models.CharField(max_length=20)
-    email = models.CharField(max_length=50)
-    #dob = models.DataField()
+    email = models.EmailField(max_length=50, unique=True)
+    dob = models.DateField()
     password = models.CharField( max_length=20)
+    #sellorbuy = models.ChoiceField(choices=[('Seller'),(Buyer)])
+
     def __str__(self):
         return self.name + ' ' + self.surname
+
 
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
