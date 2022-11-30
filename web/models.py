@@ -20,8 +20,7 @@ class Users(models.Model):
     def __str__(self):
         return self.name + ' ' + self.surname
 
-class Product(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class ProductModel(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     price = models.FloatField(default=0)
