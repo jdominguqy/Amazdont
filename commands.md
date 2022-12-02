@@ -27,6 +27,14 @@ python manage.py sqlmigrate <proyect_name> <file_number>
 python manage.py sqlmigrate web 0001
 ```
 
+### [OPTIONAL] Reset Database
+
+Reset database
+
+```
+python manage.py flush
+```
+
 # Admin section
 
 ## Create super user

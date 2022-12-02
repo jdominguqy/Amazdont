@@ -7,21 +7,31 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'web:index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="{% url 'web:product_getAll' %}">Products</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
                 <a class="nav-link" href="{% url 'web:product_create' %}">Create Product</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'web:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
             </li>
+            {% else %}
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'web:register' %}">Register</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'web:product_getAll' %}">Products</a>
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
             </li>
+            {% endif %}
+
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

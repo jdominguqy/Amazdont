@@ -1,18 +1,10 @@
 from django.contrib import admin
-from .models import User, ProductModel
-
-
-class UserAdmin(admin.ModelAdmin):
-    model = User
-    extra = 1
-
-
-admin.site.register(User, UserAdmin)
+from .models import Product
 
 
 class ProductAdmin(admin.ModelAdmin):
-    model = ProductModel
+    model = Product
     extra = 1
 
 
-admin.site.register(ProductModel, ProductAdmin)
+admin.site.register(Product, ProductAdmin)
