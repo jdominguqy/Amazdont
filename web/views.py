@@ -26,7 +26,6 @@ def register(request):
     return render(request=request, template_name="registration/register.html", context={"form": form})
 
 
-@login_required
-def profile(request):
+def search(request):
     context = {}
     return render(request, 'web/search.html', context)
