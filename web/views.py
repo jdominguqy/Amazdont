@@ -34,3 +34,8 @@ def profile(request):
     context = {}
     context["products"] = Product.objects.filter(userId=request.user)
     return render(request, 'registration/profile.html', context)
+
+
+def search(request):
+    context = {}
+    return render(request, 'web/search.html', context)
