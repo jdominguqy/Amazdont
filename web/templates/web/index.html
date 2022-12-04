@@ -1,28 +1,41 @@
 {% extends "web/base.html" %}
 {% block content %}
 
-<h1>Welcome to Amazdont!!</h1>
-<p>
-<form method="POST" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    {% csrf_token %}
-</form>
-</p>
+{% load static %}
 
-<p>
-    {% for data in dataset %}
+<div class="text-center">
+    <img src="{% static 'media/logo.png' %}" alt="My image" width="250" height="auto">
+</div>
 
-    {{ data.user }}
-    {{ data.name }}<br />
-    {{ data.description }}<br />
-    {{ data.price }}<br />
-    <a href="{% url 'web:product_update' id=data.id %}">Edit</a>
-    <a href="{% url 'web:product_delete' id=data.id %}">Delete</a>
+<div class="container">
 
-    <hr />
-    {% endfor %}
+    <div class="row d-flex justify-content-center align-items-center">
 
-</p>
+        <div class="col-md-6">
 
-{% endblock %}
+            <p>
+            <form method="POST" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
+                <input class="form-control form-input mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    id="search" style="width: 70%;">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                {% csrf_token %}
+            </form>
+            </p>
+
+
+            <p>
+                {% for data in dataset %}
+
+                {{ data.user }}
+                {{ data.name }}<br />
+                {{ data.description }}<br />
+                {{ data.price }}<br />
+                <a href="{% url 'web:product_update' id=data.id %}">Edit</a>
+                <a href="{% url 'web:product_delete' id=data.id %}">Delete</a>
+
+                <hr />
+                {% endfor %}
+
+            </p>
+
+            {% endblock %}
