@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from web.forms import NewUserForm
+from .models import Product
 
 
 def index(request):
@@ -21,3 +23,10 @@ def register(request):
             request, form.errors)
     form = NewUserForm()
     return render(request=request, template_name="registration/register.html", context={"form": form})
+
+
+@login_required
+def profile(request):
+    context = {}
+    context["products"] = Product.objects.filter(userId=request.user)
+    return render(request, 'registration/profile.html', context)

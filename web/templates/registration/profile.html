@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+
+<p>
+    User data </br>
+    Username: {{ user.username }} </br>
+    First name: {{ user.first_name }} </br>
+    Last name: {{ user.last_name }} </br>
+    Email: {{ user.email }} </br>
+</p>
+
+<p>
+    {% for product in products %}
+    {{ product.user }}
+    {{ product.name }}<br />
+    {{ product.description }}<br />
+    {{ product.price }}<br />
+    <a href="{% url 'web:product_update' id=product.id %}">Edit</a>
+    <a href="{% url 'web:product_delete' id=product.id %}">Delete</a>
+    <hr />
+    {% endfor %}
+</p>
+
+
+{% endblock %}

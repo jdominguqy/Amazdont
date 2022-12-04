@@ -8,6 +8,7 @@ urlpatterns = [
 
     # Register
     path('register/', views.register, name='register'),
+    path('profile/', views.profile, name='profile'),
 
     # Products
     path('products/create', product.create, name='product_create'),
