@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 from web.forms import NewUserForm
-from .models import Product
+from web.models import Product
 
 
 def index(request):
-    return render(request, 'web/index.html', {})
+    context = {}
+    context["dataset"] = Product.objects.all().order_by("-id")[:2]
+    return render(request, 'web/index.html', context)
 
 
 def register(request):
@@ -28,5 +29,4 @@ def register(request):
 @login_required
 def profile(request):
     context = {}
-    context["products"] = Product.objects.filter(userId=request.user)
-    return render(request, 'registration/profile.html', context)
+    return render(request, 'web/search.html', context)
