@@ -19,6 +19,9 @@
                 <a class="nav-link" href="{% url 'web:search' %}">Search</a>
             </li>
 
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'web:profile' %}">Profile</a>
+            </li>
 
             {% if user.is_authenticated %}
             <li class="nav-item active">
