@@ -1,7 +1,17 @@
 {% extends "web/base.html" %}
 {% block content %}
 
+<p>
+    {% for data in dataset %}
 
+    {{ data.user }}
+    {{ data.name }}<br />
+    {{ data.description }}<br />
+    {{ data.price }}<br />
 
+    <hr />
+    {% endfor %}
+
+</p>
 
 {% endblock %}

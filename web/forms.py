@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product
+from .models import Product, SearchRequest
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 
@@ -28,3 +28,15 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class SearchForm(forms.ModelForm):
+
+    searchRequest = forms.CharField(required=True)
+
+    class Meta:
+        model = SearchRequest
+
+        fields = [
+            "searchRequest"
+        ]

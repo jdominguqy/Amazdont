@@ -3,16 +3,30 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from web.forms import NewUserForm
+from web.forms import NewUserForm, SearchForm
 from web.models import Product
 from .models import Product
 
 
 def index(request):
-    return render(request, 'web/index.html', {})
     context = {}
+    form = SearchForm(request.POST or None)
+    context["form"] = form
     context["dataset"] = Product.objects.all().order_by("-id")[:2]
     return render(request, 'web/index.html', context)
+
+
+def search(request):
+    context = {}
+    form = SearchForm(request.POST or None)
+    context["form"] = form
+
+    if request.method == "POST":
+        if form.is_valid():
+            context["dataset"] = Product.objects.all().filter(
+                name=form.searchRequest)
+            print(context)
+    return render(request, 'web/search.html', context)
 
 
 def register(request):
