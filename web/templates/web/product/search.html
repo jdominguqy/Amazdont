@@ -1,0 +1,25 @@
+{% extends "web/base.html" %}
+{% block content %}
+
+<form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
+    <input class="form-control form-input mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search"
+        id="search" style="width: 70%;">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<div class="main">
+
+    {% for product in products %}
+
+    {{ product.id }}
+    {{ product.user }}<br />
+    {{ product.name }}<br />
+    {{ product.description }}<br />
+    {{ product.price }}<br />
+
+    <hr />
+    {% endfor %}
+
+</div>
+
+{% endblock %}

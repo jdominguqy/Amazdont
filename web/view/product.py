@@ -26,7 +26,7 @@ def create(request: HttpRequest) -> HttpResponse:
 def list(request: HttpRequest):
     context = {}
     context["dataset"] = Product.objects.all()
-    return render(request, "web/product/list.html", context)
+    return render(request, "web/product/search.html", context)
 
 
 def details(request: HttpRequest, id):

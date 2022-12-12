@@ -3,30 +3,26 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from web.forms import NewUserForm, SearchForm
+from web.forms import NewUserForm
 from web.models import Product
 from .models import Product
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 def index(request):
     context = {}
-    form = SearchForm(request.POST or None)
-    context["form"] = form
     context["dataset"] = Product.objects.all().order_by("-id")[:2]
     return render(request, 'web/index.html', context)
 
 
 def search(request):
-    context = {}
-    form = SearchForm(request.POST or None)
-    context["form"] = form
-
-    if request.method == "POST":
-        if form.is_valid():
-            context["dataset"] = Product.objects.all().filter(
-                name=form.searchRequest)
-            print(context)
-    return render(request, 'web/search.html', context)
+    query_dict = request.GET  # this is a dictionary
+    query = query_dict.get("query")
+    products = Product.objects.all().filter(name__icontains=query)
+    context = {"products": products}
+    return render(request, 'web/product/search.html', context)
 
 
 def register(request):
@@ -48,8 +44,3 @@ def profile(request):
     context = {}
     context["products"] = Product.objects.filter(userId=request.user)
     return render(request, 'registration/profile.html', context)
-
-
-def search(request):
-    context = {}
-    return render(request, 'web/search.html', context)
