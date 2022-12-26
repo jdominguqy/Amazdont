@@ -2,9 +2,11 @@
 {% block content %}
 
 <div class="main">
-    {{ data.name }}<br />
-    {{ data.description }}<br />
-    {{ data.price }}<br />
+    {{ product.name }}<br />
+    {{ product.description }}<br />
+    {{ product.price }}<br />
+
+    <a href="{% url 'web:product_buy' id=product.id %}">Buy</a>
 </div>
 
 {% endblock %}

@@ -13,14 +13,15 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     context = {}
-    context["dataset"] = Product.objects.all().order_by("-id")[:2]
+    context["products"] = Product.objects.all().filter(
+        status=0).order_by("-id")[:2]
     return render(request, 'web/index.html', context)
 
 
 def search(request):
     query_dict = request.GET  # this is a dictionary
     query = query_dict.get("query")
-    products = Product.objects.all().filter(name__icontains=query)
+    products = Product.objects.all().filter(name__icontains=query).filter(status=0)
     context = {"products": products}
     return render(request, 'web/product/search.html', context)
 

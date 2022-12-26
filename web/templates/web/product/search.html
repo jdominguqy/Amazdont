@@ -17,6 +17,8 @@
     {{ product.description }}<br />
     {{ product.price }}<br />
 
+    <a href="{% url 'web:product_details' id=product.id %}">Description</a>
+
     <hr />
     {% endfor %}
 

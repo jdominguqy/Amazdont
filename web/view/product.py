@@ -31,7 +31,7 @@ def list(request: HttpRequest):
 
 def details(request: HttpRequest, id):
     context = {}
-    context["data"] = Product.objects.get(id=id)
+    context["product"] = Product.objects.get(id=id)
     return render(request, "web/product/details.html", context)
 
 
@@ -40,6 +40,8 @@ def update(request: HttpRequest, id):
     context = {}
     obj = get_object_or_404(Product, id=id)
     form = ProductForm(request.POST or None, instance=obj)
+
+    # TODO: Check if the logged user is the owner of the product. If not, return error message and redirect to index
 
     if form.is_valid():
         obj = form.save(commit=False)
@@ -56,8 +58,19 @@ def delete(request, id):
     context = {}
     obj = get_object_or_404(Product, id=id)
 
+    # TODO: Check if the logged user is the owner of the product. If not, return error message and redirect to index
+
     if request.method == "POST":
         obj.delete()
         return redirect("web:product_getAll")
 
     return render(request, "web/product/delete.html", context)
+
+
+@login_required
+def buy(request, id):
+    obj = get_object_or_404(Product, id=id)
+    obj.status = 1
+    obj.save()
+    messages.success(request, "Product bought")
+    return redirect("web:index")
