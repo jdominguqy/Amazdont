@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{% static 'web/style.css' %}">
 </head>
 
-<body>
+<body style="padding-bottom: 3em;">
     {% if messages %}
     {% for message in messages %}
 
@@ -53,8 +53,6 @@
     <div class="container-fluid" width="95%">
         {% block content %}{% endblock %}
     </div>
-
-
 </body>
 
 {% include 'web/footer.html' %}
