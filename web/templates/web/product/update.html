@@ -1,18 +1,27 @@
 {% extends "web/base.html" %}
 {% block content %}
+{% load static %}
 
-<div class="main">
-    <!-- Create a Form -->
-    <form method="POST">
-        <!-- Security token by Django -->
-        {% csrf_token %}
+<div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
+    <div class="col-md-6">
 
-        <!-- form as paragraph -->
-        {{ form.as_p }}
+        <link rel="stylesheet" href="{% static 'web/box2.css' %}">
 
-        <input type="submit" value="Update">
-    </form>
+        <br />
+        <h2>Edit Product</h2>
+        <br />
 
+        <!-- Create a Form -->
+        <form method="POST">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+
+            <!-- form as paragraph -->
+            {{ form.as_p }}
+
+            <input type="submit" value="Update">
+        </form>
+
+        {% endblock %}
+    </div>
 </div>
-
-{% endblock %}

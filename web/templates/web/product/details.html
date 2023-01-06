@@ -18,12 +18,11 @@
 
         <p>
             Description: {{ product.description }}<br />
-            $&nbsp{{ product.price }}<br /> <br />
+            $&nbsp{{ product.price }}<br />
 
             <a href="{% url 'web:product_buy' id=product.id %}">
-                <button type="submit">Buy</button>
+                <button>Buy</button>
             </a>
-
 
         </p>
     </div>

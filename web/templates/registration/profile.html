@@ -1,27 +1,47 @@
-<head><title>Amazdont - Profile></title></head>
+<head>
+    <title>Amazdont - Profile></title>
+</head>
 {% extends "web/base.html" %}
 
 {% block content %}
+{% load static %}
 
-<p>
-    User data </br>
-    Username: {{ user.username }} </br>
-    First name: {{ user.first_name }} </br>
-    Last name: {{ user.last_name }} </br>
-    Email: {{ user.email }} </br>
-</p>
+<div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
+    <div class="col-md-6">
 
-<p>
-    {% for product in products %}
-    {{ product.user }}
-    {{ product.name }}<br />
-    {{ product.description }}<br />
-    {{ product.price }}<br />
-    <a href="{% url 'web:product_update' id=product.id %}">Edit</a>
-    <a href="{% url 'web:product_delete' id=product.id %}">Delete</a>
-    <hr />
-    {% endfor %}
-</p>
+        <link rel="stylesheet" href="{% static 'web/box2.css' %}">
 
+        <br />
 
-{% endblock %}
+        <form>
+            User data </br>
+            Username: {{ user.username }} </br>
+            First name: {{ user.first_name }} </br>
+            Last name: {{ user.last_name }} </br>
+            Email: {{ user.email }} </br>
+        </form>
+
+        <link rel="stylesheet" href="{% static 'web/box.css' %}">
+        {% for product in products %}
+
+        <p>
+            {{ product.user }}
+            {{ product.name }}<br />
+            {{ product.price }}<br />
+
+            <a href="{% url 'web:product_details' id=product.id %}">
+                <button>Description</button>
+            </a> &nbsp
+            <a href="{% url 'web:product_update' id=product.id %}">
+                <button>Edit</button>
+            </a> &nbsp
+            <a href="{% url 'web:product_delete' id=product.id %}">
+                <button>Delete</button>
+            </a>
+        </p>
+
+        {% endfor %}
+        {% endblock %}
+
+    </div>
+</div>

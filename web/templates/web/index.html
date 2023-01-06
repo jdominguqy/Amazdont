@@ -44,7 +44,10 @@
                 {{ product.name }}<br />
                 $&nbsp{{ product.price }}<br />
 
-                <a href="{% url 'web:product_details' id=product.id %}">Description</a>
+                <a href="{% url 'web:product_details' id=product.id %}">
+                    <button>Description</button>
+                </a>
+
             </p>
 
             {% endfor %}

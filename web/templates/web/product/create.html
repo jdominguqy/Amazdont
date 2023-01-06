@@ -1,16 +1,29 @@
 {% extends "web/base.html" %}
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
+{% load static %}
 
-    <!-- Security token -->
-    {% csrf_token %}
+<div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
+    <div class="col-md-6">
 
-    <!-- Using the formset -->
-    {{ form.as_p }}
-    <input type="hidden" value="1" id="user_id">
+        <link rel="stylesheet" href="{% static 'web/box2.css' %}">
 
-    <input type="submit" value="Submit">
-</form>
+        <br />
+        <h2>Add a new product</h2>
+        <br />
 
-{% endblock %}
+        <form method="POST" enctype="multipart/form-data">
+
+            <!-- Security token -->
+            {% csrf_token %}
+
+            <!-- Using the formset -->
+            {{ form.as_p }}
+            <input type="hidden" value="1" id="user_id">
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% endblock %}
+    </div>
+</div>
