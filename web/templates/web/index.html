@@ -13,27 +13,39 @@
 
         <div class="col-md-6">
 
-            <p>
+            <br />
 
 
             <form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
-                <input class="form-control form-input mr-sm-2" type="text" name="query" placeholder="Search"
-                    aria-label="Search" id="search" style="width: 70%;">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input type="text" name="query" placeholder="" aria-label="Search" id="search" style="width: 85%;
+                border: 0px;
+                background: #ffffff;
+                border-radius: 10px;
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+                padding: 2%;">
+
+                <button style="width: 15%;
+                border: 0px;
+                background: #ffffff;
+                border-radius: 10px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+                padding: 2%;" type="submit">Search</button>
             </form>
-            </p>
+
+            <br />
+
+            <link rel="stylesheet" href="{% static 'web/box.css' %}">
+
+            {% for product in products %}
 
             <p>
-                {% for product in products %}
-
                 {{ product.user }}
                 {{ product.name }}<br />
                 {{ product.description }}<br />
                 {{ product.price }}<br />
-
-                <hr />
-                {% endfor %}
-
             </p>
 
+            {% endfor %}
             {% endblock %}

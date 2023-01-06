@@ -1,12 +1,21 @@
 {% extends "web/base.html" %}
 {% block content %}
 
-<div class="main">
-    {{ product.name }}<br />
-    {{ product.description }}<br />
-    {{ product.price }}<br />
+{% load static %}
 
-    <a href="{% url 'web:product_buy' id=product.id %}">Buy</a>
+<div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
+    <div class="col-md-6">
+        <br />
+        <p>
+            {{ product.name }} (ID: {{ product.id }}) <br />
+            <br />
+            Description: <br />
+            {{ product.description }}<br />
+            $&nbsp{{ product.price }}<br />
+        </p>
+
+        <a href="{% url 'web:product_buy' id=product.id %}">Buy</a>
+    </div>
+
+    {% endblock %}
 </div>
-
-{% endblock %}

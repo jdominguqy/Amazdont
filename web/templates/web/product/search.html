@@ -1,27 +1,52 @@
 {% extends "web/base.html" %}
 {% block content %}
 
-<form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
-    <input class="form-control form-input mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search"
-        id="search" style="width: 70%;">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+{% load static %}
 
-<div class="main">
 
-    {% for product in products %}
+<div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
+    <div class="col-md-6">
 
-    {{ product.id }}
-    {{ product.user }}<br />
-    {{ product.name }}<br />
-    {{ product.description }}<br />
-    {{ product.price }}<br />
+        <br />
 
-    <a href="{% url 'web:product_details' id=product.id %}">Description</a>
+        <form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
+            <input type="text" name="query" placeholder="" aria-label="Search" id="search" style="width: 60%;
+            border: 0px;
+            background: #ffffff;
+            border-radius: 10px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            padding: 2%;">
 
-    <hr />
-    {% endfor %}
+            <button style="width: 15%;
+            border: 0px;
+            background: #ffffff;
+            border-radius: 10px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            padding: 2%;" type="submit">Search</button>
+        </form>
 
+        <br />
+
+        <div class="main">
+
+            <link rel="stylesheet" href="{% static 'web/box.css' %}">
+
+            {% for product in products %}
+
+            <p>
+                {{ product.user }}
+                {{ product.name }}<br />
+                $&nbsp{{ product.price }}<br />
+
+                <a href="{% url 'web:product_details' id=product.id %}">Description</a>
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+        {% endblock %}
+    </div>
 </div>
-
-{% endblock %}
