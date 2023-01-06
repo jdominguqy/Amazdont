@@ -12,6 +12,7 @@ form {
 
 
 button {
+    width: fit-content;
     border: 0px;
     background: #ececec;
     border-radius: 10px;

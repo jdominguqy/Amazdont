@@ -1,0 +1,19 @@
+input {
+    width: 80%;
+    border: 0px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 2%;
+}
+
+form button {
+    width: 20%;
+    border: 0px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding: 2%;
+}

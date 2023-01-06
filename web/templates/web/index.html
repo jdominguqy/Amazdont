@@ -13,28 +13,17 @@
 
         <div class="col-md-6">
 
+            <link rel="stylesheet" href="{% static 'web/search.css' %}">
             <br />
 
             <form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
-                <input type="text" name="query" placeholder="" aria-label="Search" id="search" style="width: 85%;
-                border: 0px;
-                background: #ffffff;
-                border-radius: 10px;
-                border-top-right-radius: 0px;
-                border-bottom-right-radius: 0px;
-                padding: 2%;">
-
-                <button style="width: 15%;
-                border: 0px;
-                background: #ffffff;
-                border-radius: 10px;
-                border-top-left-radius: 0px;
-                border-bottom-left-radius: 0px;
-                padding: 2%;" type="submit">Search</button>
+                <input type="text" name="query" placeholder="" aria-label="Search" id="search">
+                <button type="submit">Search</button>
             </form>
 
             <br />
 
+            {% load static %}
             <link rel="stylesheet" href="{% static 'web/box.css' %}">
 
             {% for product in products %}
@@ -52,3 +41,7 @@
 
             {% endfor %}
             {% endblock %}
+
+        </div>
+    </div>
+</div>
