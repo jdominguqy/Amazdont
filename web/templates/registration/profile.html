@@ -12,9 +12,10 @@
         <link rel="stylesheet" href="{% static 'web/box2.css' %}">
 
         <br />
+        <h2>User Data</h2>
+        <br />
 
         <form>
-            User data </br>
             Username: {{ user.username }} </br>
             First name: {{ user.first_name }} </br>
             Last name: {{ user.last_name }} </br>
@@ -26,8 +27,8 @@
 
         <p>
             {{ product.user }}
-            {{ product.name }}<br />
-            {{ product.price }}<br />
+            <b> {{ product.name }} </b> <br />
+            $&nbsp {{ product.price }}<br />
 
             <a href="{% url 'web:product_details' id=product.id %}">
                 <button>Description</button>

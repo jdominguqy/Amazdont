@@ -24,7 +24,7 @@
 
         <p>
             {{ product.user }}
-            {{ product.name }}<br />
+            <b> {{ product.name }} </b> <br />
             $&nbsp{{ product.price }}<br />
 
             <a href="{% url 'web:product_details' id=product.id %}">
@@ -33,7 +33,7 @@
         </p>
 
         {% endfor %}
-
         {% endblock %}
+
     </div>
 </div>
