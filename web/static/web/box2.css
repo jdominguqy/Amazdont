@@ -1,13 +1,15 @@
-p {
-    border: 2.5px solid #FF9900;
+form {
+    border: 2.5px solid #000000;
     padding: 10px;
     background: #ffffff;
     width: auto;
     border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-left-width: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-width: 10px;
     padding-left: 3%;
 }
+
 
 button {
     border: 0px;

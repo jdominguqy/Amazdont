@@ -5,16 +5,27 @@
 
 <div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
     <div class="col-md-6">
+
+        <link rel="stylesheet" href="{% static 'web/box.css' %}">
+
         <br />
-        <p>
-            {{ product.name }} (ID: {{ product.id }}) <br />
-            <br />
-            Description: <br />
-            {{ product.description }}<br />
-            $&nbsp{{ product.price }}<br />
+        <h2>Product Info</h2>
+        <br />
+
+        <p style="width:fit-content; padding-right: 5%;">
+            {{ product.name }} (ID: {{ product.id }})
         </p>
 
-        <a href="{% url 'web:product_buy' id=product.id %}">Buy</a>
+        <p>
+            Description: {{ product.description }}<br />
+            $&nbsp{{ product.price }}<br /> <br />
+
+            <a href="{% url 'web:product_buy' id=product.id %}">
+                <button type="submit">Buy</button>
+            </a>
+
+
+        </p>
     </div>
 
     {% endblock %}
