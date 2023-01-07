@@ -13,30 +13,25 @@
 
         <div class="col-md-6">
 
-            <link rel="stylesheet" href="{% static 'web/search.css' %}">
             <br />
 
             <form method="GET" action="{% url 'web:search' %}" class="form-inline my-2 my-lg-0">
-                <input type="text" name="query" placeholder="" aria-label="Search" id="search">
-                <button type="submit">Search</button>
+                <input type="text" class="searchInput" name="query" placeholder="" aria-label="Search" id="search">
+                <button type="submit" class="searchButton">Search</button>
             </form>
 
             <br />
 
-            {% load static %}
-            <link rel="stylesheet" href="{% static 'web/box.css' %}">
-
             {% for product in products %}
 
-            <p>
+            <p class="boxOrange">
                 {{ product.user }}
                 <b> {{ product.name }} </b> <br />
                 $&nbsp{{ product.price }}<br />
 
                 <a href="{% url 'web:product_details' id=product.id %}">
-                    <button>Description</button>
+                    <button class="actionButton">Description</button>
                 </a>
-
             </p>
 
             {% endfor %}

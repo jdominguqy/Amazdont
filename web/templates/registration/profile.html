@@ -9,35 +9,32 @@
 <div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
     <div class="col-md-6">
 
-        <link rel="stylesheet" href="{% static 'web/box2.css' %}">
-
         <br />
         <h2>User Data</h2>
         <br />
 
-        <form>
+        <p class="boxBlack" style="width: 80%;">
             Username: {{ user.username }} </br>
             First name: {{ user.first_name }} </br>
             Last name: {{ user.last_name }} </br>
             Email: {{ user.email }} </br>
-        </form>
+        </p>
 
-        <link rel="stylesheet" href="{% static 'web/box.css' %}">
         {% for product in products %}
 
-        <p>
+        <p class="boxOrange">
             {{ product.user }}
             <b> {{ product.name }} </b> <br />
             $&nbsp {{ product.price }}<br />
 
             <a href="{% url 'web:product_details' id=product.id %}">
-                <button>Description</button>
+                <button class="actionButton">Description</button>
             </a> &nbsp
             <a href="{% url 'web:product_update' id=product.id %}">
-                <button>Edit</button>
+                <button class="actionButton">Edit</button>
             </a> &nbsp
             <a href="{% url 'web:product_delete' id=product.id %}">
-                <button>Delete</button>
+                <button class="actionButton">Delete</button>
             </a>
         </p>
 

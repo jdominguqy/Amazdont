@@ -5,21 +5,19 @@
 <div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
     <div class="col-md-6">
 
-        <link rel="stylesheet" href="{% static 'web/box2.css' %}">
-
         <br />
         <h2>Edit Product</h2>
         <br />
 
         <!-- Create a Form -->
-        <form method="POST">
+        <form method="POST" class="boxBlack">
             <!-- Security token by Django -->
             {% csrf_token %}
 
             <!-- form as paragraph -->
             {{ form.as_p }}
 
-            <button type="submit">Update</button>
+            <button type="submit" class="actionButton">Update</button>
         </form>
 
         {% endblock %}
