@@ -3,7 +3,6 @@
 
 {% load static %}
 
-
 <div class="row d-flex justify-content-left align-items-center" style="padding-left: 2%;">
     <div class="col-md-6">
 
@@ -18,9 +17,9 @@
 
         {% for product in products %}
 
-        <p class="boxOrange">
+        <p class="boxOrange" style="width: 47%;">
             {{ product.user }}
-            <b> {{ product.name }} </b> <br />
+            <b> {{ product.name }}</b> <br />
             $&nbsp{{ product.price }}<br />
 
             <a href="{% url 'web:product_details' id=product.id %}">
