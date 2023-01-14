@@ -41,7 +41,9 @@ def update(request: HttpRequest, id):
     obj = get_object_or_404(Product, id=id)
     form = ProductForm(request.POST or None, instance=obj)
 
-    # TODO: Check if the logged user is the owner of the product. If not, return error message and redirect to index
+    if (request.user.id != obj.userId):
+        messages.error(request, "You are not the owner of that product.")
+        return redirect("web:index")
 
     if form.is_valid():
         obj = form.save(commit=False)
@@ -58,11 +60,13 @@ def delete(request, id):
     context = {}
     obj = get_object_or_404(Product, id=id)
 
-    # TODO: Check if the logged user is the owner of the product. If not, return error message and redirect to index
+    if (request.user.id != obj.userId):
+        messages.error(request, "You are not the owner of that product.")
+        return redirect("web:index")
 
     if request.method == "POST":
         obj.delete()
-        return redirect("web:product_getAll")
+        return redirect("web:index")
 
     return render(request, "web/product/delete.html", context)
 
