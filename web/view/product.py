@@ -74,6 +74,10 @@ def delete(request, id):
 @login_required
 def buy(request, id):
     obj = get_object_or_404(Product, id=id)
+    if (obj.status == 1):
+        messages.error(request, "Product already sold.")
+        return redirect("web:index")
+
     obj.status = 1
     obj.save()
     messages.success(request, "Product bought")
