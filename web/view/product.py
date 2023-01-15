@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+import os
 from web.forms import ProductForm
 from web.models import Product
 
@@ -15,6 +15,7 @@ def create(request: HttpRequest) -> HttpResponse:
     if form.is_valid():
         obj = form.save(commit=False)
         obj.userId = request.user
+        obj.image = request.FILES['image']
         obj.save()
         messages.success(request, "Product created correctly.")
         return redirect("web:index")
@@ -66,6 +67,7 @@ def delete(request, id):
 
     if request.method == "POST":
         obj.delete()
+        os.remove(obj.imahe.path)
         return redirect("web:index")
 
     return render(request, "web/product/delete.html", context)
