@@ -30,8 +30,8 @@
             <a href="{% url 'web:product_details' id=product.id %}">
                 <button class="actionButton">Description</button>
             </a> &nbsp
-            {% if product.status %}
 
+            {% if product.status %}
             <a href="{% url 'web:product_update' id=product.id %}">
                 <button class="actionButton">Edit</button>
             </a> &nbsp

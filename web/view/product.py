@@ -16,6 +16,7 @@ def create(request: HttpRequest) -> HttpResponse:
         obj = form.save(commit=False)
         obj.userId = request.user
         obj.image = request.FILES['image']
+        obj.status = 0
         obj.save()
         messages.success(request, "Product created correctly.")
         return redirect("web:index")
