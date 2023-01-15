@@ -1,5 +1,7 @@
 from django.urls import include, path
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,3 +17,7 @@ urlpatterns = [
     # accounts/reset/<uidb64 > / < token > / [name = 'password_reset_confirm']
     # accounts/reset/done / [name= 'password_reset_complete']
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
