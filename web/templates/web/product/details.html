@@ -11,7 +11,7 @@
         <br />
 
         <p class="boxOrange" style="width:fit-content; padding-right: 5%;">
-            <b> {{ product.name }} </b> (ID: {{ product.id }})
+            <b> {{ product.name }} </b>
         </p>
 
         <p class="boxOrange">
@@ -23,10 +23,12 @@
             </a>
         </p>
 
-    
+
     </div>
+    {% if product.image %}
     <div class="col">
-        <img src="{{product.image.url}}" class="img-thumbnail"  width="250" height="250" >
+        <img src="{{product.image.url}}" class="img-thumbnail" width="250" height="250">
     </div>
+    {% endif %}
     {% endblock %}
 </div>

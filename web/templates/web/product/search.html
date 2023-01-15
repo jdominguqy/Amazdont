@@ -18,11 +18,16 @@
         {% for product in products %}
 
         <br>
-        
+
         <div class="boxOrange" class="container-flex">
+
+
+            {% if product.image %}
             <div class="col">
-                <img src="{{product.image.url}}" class="img-thumbnail" width="100" height="100"  >
-            </div> 
+                <img src="{{product.image.url}}" class="img-thumbnail" width="100" height="100">
+            </div>
+            {% endif %}
+
             <div class="col">
                 {{ product.user }}
                 <b> {{ product.name }}</b> <br />
@@ -32,9 +37,9 @@
                     <button class="actionButton">Description</button>
                 </a>
             </div>
-           
-               
-        
+
+
+
         </div>
 
         {% endfor %}
