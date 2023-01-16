@@ -15,7 +15,8 @@ def create(request: HttpRequest) -> HttpResponse:
     if form.is_valid():
         obj = form.save(commit=False)
         obj.userId = request.user
-        obj.image = request.FILES['image']
+        if (request.FILES.keys() >= {"image"}):
+            obj.image = request.FILES['image']
         obj.status = 0
         obj.save()
         messages.success(request, "Product created correctly.")
