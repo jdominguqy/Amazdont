@@ -43,7 +43,7 @@ def update(request: HttpRequest, id):
     obj = get_object_or_404(Product, id=id)
     form = ProductForm(request.POST or None, instance=obj)
 
-    if (request.user.id != obj.userId):
+    if (request.user != obj.userId):
         messages.error(request, "You are not the owner of that product.")
         return redirect("web:index")
 
@@ -62,7 +62,7 @@ def delete(request, id):
     context = {}
     obj = get_object_or_404(Product, id=id)
 
-    if (request.user.id != obj.userId):
+    if (request.user != obj.userId):
         messages.error(request, "You are not the owner of that product.")
         return redirect("web:index")
 
