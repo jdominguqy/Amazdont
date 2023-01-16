@@ -19,7 +19,7 @@
             $&nbsp{{ product.price }}<br />
 
 
-            {% if product.status %}
+            {% if product.status == 0 %}
             <a href="{% url 'web:product_buy' id=product.id %}">
                 <button class="actionButton">Buy</button>
             </a>

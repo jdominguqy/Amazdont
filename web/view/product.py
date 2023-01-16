@@ -69,7 +69,8 @@ def delete(request, id):
 
     if request.method == "POST":
         obj.delete()
-        os.remove(obj.image.path)
+        if (obj.image):
+            os.remove(obj.image.path)
         return redirect("web:index")
 
     return render(request, "web/product/delete.html", context)
